@@ -44,7 +44,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 */
 /** @var object $router **/
 
-$router->get('/', 'Welcome::index');
+$router->get('/', 'Users::index');
 $router->get('/users', 'Users::index');
 
 // Debug: Uncomment to see registered routes
