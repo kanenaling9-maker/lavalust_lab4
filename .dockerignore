@@ -1,0 +1,10 @@
+.env
+.git
+.gitignore
+runtime/*
+!runtime/.htaccess
+!runtime/index.html
+vendor/
+app/vendor/
+*.log
+*.cache
