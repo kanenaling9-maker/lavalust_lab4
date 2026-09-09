@@ -44,8 +44,21 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 */
 /** @var object $router **/
 
-$router->get('/', 'Users::index');
-$router->get('/users', 'Users::index');
+$router->get('/', 'Auth::login');
+$router->get('/login', 'Auth::login');
+$router->post('/login', 'Auth::login');
+$router->get('/register', 'Auth::register');
+$router->post('/register', 'Auth::register');
+$router->post('/logout', 'Auth::logout');
+
+$router->get('/products', 'Products::index')->middleware('auth');
+$router->get('/products/create', 'Products::create')->middleware('auth');
+$router->post('/products/create', 'Products::create')->middleware('auth');
+$router->get('/products/edit/{id}', 'Products::edit')->where_number('id')->middleware('auth');
+$router->post('/products/edit/{id}', 'Products::edit')->where_number('id')->middleware('auth');
+$router->post('/products/delete/{id}', 'Products::delete')->where_number('id')->middleware('auth');
+
+$router->get('/users', 'Users::index')->middleware('auth');
 
 // Debug: Uncomment to see registered routes
 // error_log('Routes registered: ' . json_encode($router));
